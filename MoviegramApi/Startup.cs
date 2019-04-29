@@ -16,9 +16,12 @@ using Swashbuckle.AspNetCore.Swagger;
 
 namespace MoviegramApi
 {
+    /// <summary>
+    /// Startip class for the web api. Most settings have been left as default. We have added settings for Swagger, and an EF Core database connection
+    /// </summary>
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }

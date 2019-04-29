@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MoviegramApi.DataModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MoviegramApi.Data
 {
@@ -17,12 +13,23 @@ namespace MoviegramApi.Data
     /// </summary>
     public class MoviegramContext : DbContext
     {
+        /// <summary>
+        /// Contructor required in order to pass options to base class
+        /// </summary>
+        /// <param name="options">context options</param>
         public MoviegramContext(DbContextOptions<MoviegramContext> options) : base(options)
         {        
         }
 
+        /// <summary>
+        /// DbSet of movies in the database
+        /// </summary>
         public DbSet<Movie> Movies { get; set; }
 
+        /// <summary>
+        /// Actions to perform on model building, such as mapping data classes to tables
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

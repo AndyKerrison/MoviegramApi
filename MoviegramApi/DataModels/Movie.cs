@@ -31,5 +31,25 @@ namespace MoviegramApi.DataModels
         /// Showtimes for this movie. Movie has a one to many relationship to Showtimes. 
         /// </summary>
         public ICollection<Showtime> Showtimes { get; set; }
+
+        /// <summary>
+        /// Movie description
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// byte data for full movie picture
+        /// </summary>
+        public byte[] Picture { get; set; }
+        
+        /// <summary>
+        /// movie publisher
+        /// </summary>
+        public string Publisher { get; set; }
+
+        /// <summary>
+        /// year of movie publication
+        /// </summary>
+        public int Year { get; set; }
     }
 }
