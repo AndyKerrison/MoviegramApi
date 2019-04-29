@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MoviegramApi.Data;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace MoviegramApi
@@ -28,8 +30,17 @@ namespace MoviegramApi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            //in a production environment, our connection string would be held in a secret store, accessed via e.g certificate authentication,
+            //AWS roles assigned to the instance this code is running on, or something similar.
+            string connectionString = "Data Source=moviegram.cmotchajvce8.us-east-2.rds.amazonaws.com;Initial Catalog=moviegram;User id=sa;Password=moviegram1!;";
+
+            services.AddEntityFrameworkSqlServer().AddDbContext<MoviegramContext>(options =>
+                options.UseSqlServer(connectionString)
+            );
+
             // Register the Swagger generator
-            // Comments are taken from the published Xml (enabled in VS build settings)
+            // Comments are taken from the Xml published during the build process (enabled in VS build settings)
+            // Launch settings have also been adjusted to load the swagger doc when the solution is run.
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Moviegram Api", Version = "v1" });
