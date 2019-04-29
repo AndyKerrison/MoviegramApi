@@ -18,16 +18,15 @@ namespace MoviegramApi.Controllers
             _context = context;
         }
 
+
         /// <summary>
         /// This method returns a list of movie summary data - movie name, showtimes, thumbnail image
-        /// If a value is supplied for 'filter', the list of returned movies contain only those matching the filter.
-        /// The filter checks for movie names containing the supplied text
+        /// If a value is supplied for 'filter', the list of returned movies contain only those matching the filter.        
         /// </summary>
-        /// <param name="filter"></param>
+        /// <param name="filter">If present, returns only movies whose names contain the supplied text</param>
         /// <returns></returns>
-        [HttpGet("getMovies")]
-        [HttpGet("getMovies/{filter}")]
-        public ActionResult<List<MovieSummaryModel>> GetMovies(string filter = null)
+        [HttpGet("getMovies")]        
+        public ActionResult<List<MovieSummaryModel>> GetMovies([FromQuery]string filter = null)
         {
             IQueryable<Movie> movies = _context.Movies.AsQueryable();
 
@@ -45,7 +44,8 @@ namespace MoviegramApi.Controllers
             {
                 Id = x.Id,
                 Name = x.Name,
-                Showtimes = new List<ShowtimeModel>()
+                Thumbnail = x.Thumbnail,
+                Showtimes = x.Showtimes.OrderBy(y => y.ShowingDateTime).Select(y => new ShowtimeModel() { Showtime = y.ShowingDateTime }).ToList()
             }).ToList();
 
             return movieList;

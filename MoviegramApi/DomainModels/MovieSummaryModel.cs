@@ -10,5 +10,6 @@ namespace MoviegramApi.DomainModels
         public int Id { get; set; }
         public string Name { get; set; }
         public List<ShowtimeModel> Showtimes { get; set; }
+        public byte[] Thumbnail { get; internal set; }
     }
 }

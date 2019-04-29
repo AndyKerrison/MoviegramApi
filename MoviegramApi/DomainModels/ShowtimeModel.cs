@@ -7,6 +7,6 @@ namespace MoviegramApi.DomainModels
 {
     public class ShowtimeModel
     {
-        DateTime Showtime { get; set; }
+        public DateTime Showtime { get; set; }
     }
 }

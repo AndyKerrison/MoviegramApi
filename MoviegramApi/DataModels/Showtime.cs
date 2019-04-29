@@ -7,29 +7,29 @@ using System.Threading.Tasks;
 namespace MoviegramApi.DataModels
 {
     /// <summary>
-    /// A movie record in the database. Contains movie data, each movie has a reference to a number of showtimes
+    /// A showtime for a movie. 
     /// </summary>
-    public class Movie
+    public class Showtime
     {
         /// <summary>
-        /// Movie Identifier
+        /// Showing identifier
         /// </summary>
         [Key]
         public int Id { get; set; }
 
         /// <summary>
-        /// Movie name
+        /// DateTime of this showing
         /// </summary>
-        public string Name { get; set; }
+        public DateTime ShowingDateTime { get; set; }
+        
+        /// <summary>
+        ///Movie this showing belongs to.
+        /// </summary>
+        public virtual Movie Movie { get; set; }
 
         /// <summary>
-        /// Thumbnail image data
+        /// Foreign key to Movie table
         /// </summary>
-        public byte[] Thumbnail { get; set; }
-
-        /// <summary>
-        /// Showtimes for this movie. Movie has a one to many relationship to Showtimes. 
-        /// </summary>
-        public ICollection<Showtime> Showtimes { get; set; }
+        public int MovieId { get; set; }
     }
 }

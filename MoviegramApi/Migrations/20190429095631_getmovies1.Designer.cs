@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MoviegramApi.Data;
 
 namespace MoviegramApi.Migrations
 {
     [DbContext(typeof(MoviegramContext))]
-    partial class MoviegramContextModelSnapshot : ModelSnapshot
+    [Migration("20190429095631_getmovies1")]
+    partial class getmovies1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
