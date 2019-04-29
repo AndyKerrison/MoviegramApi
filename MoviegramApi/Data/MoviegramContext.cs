@@ -9,7 +9,7 @@ namespace MoviegramApi.Data
 {
     /// <summary>
     /// EF Core database context.
-    /// We are using a code first approach, therefore objects & relations are defined here and in the DataModels folder
+    /// We are using a code first approach, therefore objects and relations are defined here and in the DataModels folder
     /// Everything in the Migrations folder is auto generated
     /// Migrations are created with 'add-migration [name]'
     /// Migrations can be applied with 'update-database'

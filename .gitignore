@@ -2,3 +2,5 @@
 /MoviegramApi/obj
 /.vs
 /MoviegramApi/MoviegramApi.xml
+/UnitTests/bin
+/UnitTests/obj
